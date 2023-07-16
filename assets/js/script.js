@@ -4,6 +4,8 @@ let score1 = document.getElementById('score--1');
 let dice = document.querySelector('.dice');
 let rollDice = document.querySelector('.btn--roll');
 let current1 = document.getElementById('current--0');
+let player0 = document.querySelector('.player--0');
+let player1 = document.querySelector('.player--1');
 
 // Initialize the values to zero
 score0.textContent = 0;
@@ -34,6 +36,9 @@ rollDice.addEventListener('click', function() {
     } else {
         current = 0;
         document.getElementById(`current--${activePlayer}`).textContent = current;
+        activePlayer = activePlayer === 0 ? 1 : 0;
+        player0.classList.toggle('player--active');
+        player1.classList.toggle('player--active');
     }
 
     //4. if the random number is 1 then reset current score to zero and change the active player
