@@ -10,7 +10,11 @@ score0.textContent = 0;
 score1.textContent = 0;
 dice.classList.add('hidden');
 
+let scores = [0, 0];
 let current = 0;
+let activePlayer = 0;
+
+// scores[activePlayer]
 
 // Implement functionality for roll dice button
 rollDice.addEventListener('click', function() {
@@ -25,7 +29,11 @@ rollDice.addEventListener('click', function() {
     //3. if the random number is not 1 then add it to active player current score
     if(diceNumber != 1) {
         current += diceNumber;
-        current1.textContent = current;
+        document.getElementById(`current--${activePlayer}`).textContent = current;
+        // current1.textContent = current;
+    } else {
+        current = 0;
+        document.getElementById(`current--${activePlayer}`).textContent = current;
     }
 
     //4. if the random number is 1 then reset current score to zero and change the active player
