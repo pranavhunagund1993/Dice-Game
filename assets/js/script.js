@@ -18,6 +18,13 @@ let current = 0;
 let activePlayer = 0;
 
 // scores[activePlayer]
+let switchPlayer = function() {
+    current = 0;
+    document.getElementById(`current--${activePlayer}`).textContent = current;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    player0.classList.toggle('player--active');
+    player1.classList.toggle('player--active');
+}
 
 // Implement functionality for roll dice button
 rollDice.addEventListener('click', function() {
@@ -35,11 +42,7 @@ rollDice.addEventListener('click', function() {
         document.getElementById(`current--${activePlayer}`).textContent = current;
         // current1.textContent = current;
     } else {
-        current = 0;
-        document.getElementById(`current--${activePlayer}`).textContent = current;
-        activePlayer = activePlayer === 0 ? 1 : 0;
-        player0.classList.toggle('player--active');
-        player1.classList.toggle('player--active');
+        switchPlayer();
     }
 
     //4. if the random number is 1 then reset current score to zero and change the active player
@@ -48,4 +51,20 @@ rollDice.addEventListener('click', function() {
 // Implement hold button functionality
 holdBtn.addEventListener('click', function() {
     // 1. add current score to global score
+    scores[activePlayer] += current;
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+
+    // check if the player has already reached maximum score
+    if(scores[activePlayer] >= 20) {
+        //finish the game
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+        document.getElementById(`name--${activePlayer}`).textContent = 'Winner';
+        // hide dice image
+        dice.classList.add('hidden');
+        rollDice.classList.add('hidden');
+        holdBtn.classList.add('hidden');
+    } else {
+        switchPlayer();
+    }
 })
