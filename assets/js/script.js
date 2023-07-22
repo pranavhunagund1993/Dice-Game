@@ -7,6 +7,7 @@ let current1 = document.getElementById('current--0');
 let player0 = document.querySelector('.player--0');
 let player1 = document.querySelector('.player--1');
 let holdBtn = document.querySelector('.btn--hold');
+let newGame = document.querySelector('.btn--new');
 
 // Initialize the values to zero
 score0.textContent = 0;
@@ -67,4 +68,10 @@ holdBtn.addEventListener('click', function() {
     } else {
         switchPlayer();
     }
-})
+});
+
+// start the new game
+newGame.addEventListener('click', function() {
+    score0.textContent = 0;
+    score1.textContent = 0;
+});
