@@ -6,6 +6,7 @@ let rollDice = document.querySelector('.btn--roll');
 let current1 = document.getElementById('current--0');
 let player0 = document.querySelector('.player--0');
 let player1 = document.querySelector('.player--1');
+let holdBtn = document.querySelector('.btn--hold');
 
 // Initialize the values to zero
 score0.textContent = 0;
@@ -42,4 +43,9 @@ rollDice.addEventListener('click', function() {
     }
 
     //4. if the random number is 1 then reset current score to zero and change the active player
+})
+
+// Implement hold button functionality
+holdBtn.addEventListener('click', function() {
+    // 1. add current score to global score
 })
