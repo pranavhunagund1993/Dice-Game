@@ -12,7 +12,6 @@ let newGame = document.querySelector('.btn--new');
 let name1 = document.getElementById('name--0');
 let name2 = document.getElementById('name--1');
 
-
 // Initialize the values to zero
 let scores;
 let current;
@@ -34,7 +33,6 @@ function init() {
     rollDice.classList.remove('hidden');
     holdBtn.classList.remove('hidden');
     dice.classList.add('hidden');
-
 
     scores = [0, 0];
     current = 0;
@@ -69,7 +67,7 @@ rollDice.addEventListener('click', function() {
         switchPlayer();
     }
 
-    //4. if the random number is 1 then reset current score to zero and change the active player
+    // 4. if the random number is 1 then reset current score to zero and change the active player
 })
 
 // Implement hold button functionality
